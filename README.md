@@ -13,7 +13,9 @@ The development environment consists of the following software:
 * CI: GitHub Pipes
 * Editor: VSCode
 
-## Windows 10
+## Tools and Environment
+
+### Windows 10
 
 * Install the LTS version of NodeJS from the [NodeJS website](https://nodejs.org/en/). Note that the installation requires administrator privileges. After the installation you will be able to run the NodeJS shell (`node`) and the Node Package Manager (`npm`) from the Windows command-line interface.
 
@@ -31,9 +33,7 @@ The development environment consists of the following software:
 
     `git clone https://github.com/zoltan31/video-overlay.git`
 
-* TODO: build and run the application
-
-## Ubuntu 20.04 LTS
+### Ubuntu 20.04 LTS
 
 If you choose to use a virtual machine as your development environment, you can download a ready-made VM from [this link](https://bmeedu-my.sharepoint.com/:f:/g/personal/remenyig_edu_bme_hu/EqM2hmeNDgNNnlxb6IMMf7kBadY-U7l-IO-ln2SqY4TP1w?e=bajS3I). Note that this VM can only be imported by Hyper-V Manager. The password for the _user_ profile is _admin_.
 
@@ -73,8 +73,44 @@ Follow the steps below if you choose to set up the development environment by yo
 
     `git clone https://github.com/zoltan31/video-overlay.git`
 
-* TODO: build and run the application.
-
-## TODO: Windows 10 with Ubuntu 20.04 LTS WSL
+### TODO: Windows 10 with Ubuntu 20.04 LTS WSL
 
 MongoDB does not support WSL ([source](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)). This is probably due to the fact that MongoDB needs to run a service, which is currently unavailable in WSL 1 and 2.
+
+## Build and Run the application
+Make sure you're in the root directory before running these commands.
+### Express.js server
+
+* Install backend dependencies by running:
+
+  ```
+  cd api
+  npm install
+  ```
+
+* You can start the server by running:
+
+  `npm run dev`
+
+* (Optional) Run a slightly more optimized version of the server:
+
+  `npm run start`
+
+Once the server is running, you should see the following message in your command line:
+
+  ```
+  Server started at http://localhost:5000
+  ```
+
+### Angular web application
+
+* Install frontend dependencies by running:
+
+  ```
+  cd app
+  npm install
+  ```
+
+* Start the application and open it in your browser by running:
+
+  `ng serve --open`
