@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Auction } from './auction';
+import { AuctionService } from './auction.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  @Input() auction?: Auction;
+
+  getName(): void {
+    this.auctionService.getName()
+      .subscribe(auction => this.auction = auction);
+  }
+
+  constructor (
+    private auctionService: AuctionService
+  ) {}
+
+  ngOnInit(): void {
+    this.getName();
+  }
 }
