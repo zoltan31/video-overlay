@@ -1,8 +1,8 @@
-const mongoose = require("mongoose")
+import * as mongoose from 'mongoose';
 
 // Auctions only have a name for now
-const auctionSchema = new mongoose.Schema({
+const auctionSchema: mongoose.Schema = new mongoose.Schema({
     name: String
-})
+});
 
-module.exports = mongoose.model('Auction', auctionSchema)
+export default mongoose.model('Auction', auctionSchema);
