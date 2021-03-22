@@ -21,14 +21,8 @@ db.once('open', () => console.log('Connected to Database'));
 import Auction from "./models/auction";
 
 // insert new object into DB
-// I don't know how to delete objects from previous sessions 😅
-// But it works for now
 const firstAuction = new Auction({name: "Auction Name From MongoDB🔥"});
-try {
-	firstAuction.save();
-} catch (error) {
-	console.error(error.message);
-}
+Auction.countDocuments({ name: "Auction Name From MongoDB🔥" }, (err, count) => count === 0 && firstAuction.save());
 
 app.get("/", (_request, response) => {
 	response.send("Hello World!");
