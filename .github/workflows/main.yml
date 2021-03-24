@@ -39,8 +39,8 @@ jobs:
       
       - name: Run Server side tests
         run: |
+          cd api
           npm test
-          cd ..
 
       - name: Install Client side dependencies
         run: |
@@ -49,5 +49,5 @@ jobs:
       
       - name: Run Client side tests
         run: |
+          cd app
           npm run testci
-          cd ..
