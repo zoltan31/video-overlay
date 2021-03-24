@@ -36,6 +36,6 @@ export class AppComponent {
 
   makeLicit(): void{
     this.auctionService.postLicit(this.auction.licit).subscribe(res => console.log(res));
-    this.getName();
+    //this.getName();
   }
 }

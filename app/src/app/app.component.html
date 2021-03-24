@@ -11,13 +11,13 @@
     </div>
 
     <!-- Title -->
-    <h1 class="title">{{auction.name}}</h1>
+    <h1 class="title">{{ auction.name }}</h1>
 
     <!-- Licit price and buttons -->
     <div class="licit-ui">
-      <h2 class="price">$90.00</h2>
+      <h2 class="price">${{ auction.price }}</h2>
       <div class="licit-button-group">
-        <p class="licit-amount">{{auction.licit}}</p>
+        <p class="licit-amount">{{ auction.licit }}</p>
         <button class="licit-button" (click)="makeLicit()">Licitalok</button>
         <div class="licit-change-group">
           <button (click)="increase()">+</button>

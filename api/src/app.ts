@@ -50,7 +50,6 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 		{id: 1},
 		{price: _licit + price},
 	);
-	response.sendStatus(200);
 })
 
 export default app;
