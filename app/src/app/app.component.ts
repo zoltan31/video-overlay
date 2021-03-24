@@ -9,6 +9,7 @@ import { AuctionService } from './auction.service';
 })
 export class AppComponent {
   title = 'app';
+
   @Input() auction?: Auction;
 
   getName(): void {

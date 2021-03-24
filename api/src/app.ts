@@ -12,8 +12,8 @@ async function testDb() {
 	db.on('error', (error) => console.error(error));
 	db.once('open', () => console.log('Connected to Database'));
 	// insert new object into DB
-	const firstAuction = new Auction({id: 1, name: "Auction Name From MongoDB🔥", price: 1000, licit: 100});
-	Auction.countDocuments({ name: "Auction Name From MongoDB🔥" }, (err, count) => count === 0 && firstAuction.save());
+	const firstAuction = new Auction({id: 1, name: "Auction Name From MongoDb 🔥", price: 1000, licit: 100});
+	Auction.countDocuments({ id: 1 }, (err, count) => count === 0 && firstAuction.save());
 }
 
 // enabling 'http://localhost:4200' to use the api
@@ -24,13 +24,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json())
 
+testDb();
+
 app.get("/", (_request, response) => {
 	response.send("Hello World!");
 });
 
 app.get("/api/auction/", async (_request, response) => {
 	try {
-		await testDb();
 		const auction = await Auction.find();
 		response.json(auction[0]); // there is one auction, so only the first will be returned
 	} catch (err) {
@@ -44,7 +45,6 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 	await Auction.findOne((err, entity) => 
 	{
 		price = entity.price;
-		console.log(price);		
 	});
 	await Auction.updateOne(
 		{id: 1},
