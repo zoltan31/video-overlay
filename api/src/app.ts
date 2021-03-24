@@ -12,7 +12,7 @@ async function testDb() {
 	db.on('error', (error) => console.error(error));
 	db.once('open', () => console.log('Connected to Database'));
 	// insert new object into DB
-	const firstAuction = new Auction({name: "Auction Name From MongoDB🔥"});
+	const firstAuction = new Auction({id: 1, name: "Auction Name From MongoDB🔥", price: 1000, licit: 100});
 	Auction.countDocuments({ name: "Auction Name From MongoDB🔥" }, (err, count) => count === 0 && firstAuction.save());
 }
 
@@ -22,6 +22,7 @@ const corsOptions = {
   optionsSuccessStatus: 200 
 };
 app.use(cors(corsOptions));
+app.use(express.json())
 
 app.get("/", (_request, response) => {
 	response.send("Hello World!");
@@ -36,5 +37,20 @@ app.get("/api/auction/", async (_request, response) => {
 		response.status(500).json({message: err.message});
 	}
 });
+
+app.post("/api/auction/postlicit", async (_request, response) => {
+	let _licit = _request.body.licit;
+	let price: number;
+	await Auction.findOne((err, entity) => 
+	{
+		price = entity.price;
+		console.log(price);		
+	});
+	await Auction.updateOne(
+		{id: 1},
+		{price: _licit + price},
+	);
+	response.sendStatus(200);
+})
 
 export default app;

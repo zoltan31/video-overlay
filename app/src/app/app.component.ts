@@ -23,4 +23,18 @@ export class AppComponent {
   ngOnInit(): void {
     this.getName();
   }
+
+  increase(): void {
+    this.auction.licit = this.auction.licit + 100;
+  }
+
+  decrease(): void {
+    if(this.auction.licit > 100)
+      this.auction.licit = this.auction.licit - 100;
+  }
+
+  makeLicit(): void{
+    this.auctionService.postLicit(this.auction.licit).subscribe(res => console.log(res));
+    this.getName();
+  }
 }

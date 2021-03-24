@@ -9,6 +9,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuctionService {
 
   private auctionUrl = 'http://localhost:5000/api/auction';
+  private postlicitUrl = 'http://localhost:5000/api/auction/postlicit'
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   getName() : Observable<Auction> {
     return this.http.get<Auction>(this.auctionUrl);
@@ -17,4 +22,8 @@ export class AuctionService {
   constructor(
     private http: HttpClient,
   ) { }
+
+  postLicit(licit: Number): Observable<any>{
+    return this.http.post(this.postlicitUrl, {"licit": licit}, this.httpOptions);
+  }
 }

@@ -17,11 +17,11 @@
     <div class="licit-ui">
       <h2 class="price">$90.00</h2>
       <div class="licit-button-group">
-        <p class="licit-amount">100</p>
-        <button class="licit-button">Licitalok</button>
+        <p class="licit-amount">{{auction.licit}}</p>
+        <button class="licit-button" (click)="makeLicit()">Licitalok</button>
         <div class="licit-change-group">
-          <button>+</button>
-          <button>-</button>
+          <button (click)="increase()">+</button>
+          <button (click)="decrease()">-</button>
         </div>
       </div>
     </div>
