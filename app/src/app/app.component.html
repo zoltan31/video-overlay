@@ -1,8 +1,10 @@
 <div role="main">
   <!-- TODO: Stream should go here -->
-  <video class="stream" width="100%" height="100%"></video>
+  <!-- <video class="stream" width="100%" height="100%"></video> -->
+  
 
   <div class="layout">
+    
     <!-- Timer -->
     <div class="timer">
       <p>12</p>
@@ -12,6 +14,10 @@
 
     <!-- Title -->
     <h1 class="title">Licit nr. 1</h1>
+
+    <video id="videoPlayer" width="100%" height="100%" controls muted autoplay>
+      <source src="/video" type="video/mp4" />
+    </video>
 
     <!-- Licit price and buttons -->
     <div class="licit-ui">
