@@ -5,7 +5,7 @@ import Auction from "./models/auction";
 
 const app = express();
 
-async function testDb() {	
+async function testDb() {
 	// connect to DB
 	mongoose.connect("mongodb://localhost/auction-dev", {useNewUrlParser: true, useUnifiedTopology: true});
 	const db = mongoose.connection;
@@ -16,10 +16,9 @@ async function testDb() {
 	Auction.countDocuments({ name: "Auction Name From MongoDB🔥" }, (err, count) => count === 0 && firstAuction.save());
 }
 
-// enabling 'http://localhost:4200' to use the api
 const corsOptions = {
-  origin: 'http://localhost:4200',
-  optionsSuccessStatus: 200 
+  origin: 'http://localhost:5000',
+  optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
