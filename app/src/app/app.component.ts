@@ -15,6 +15,8 @@ export class AppComponent {
   getName(): void {
     this.auctionService.getName()
       .subscribe(auction => this.auction = auction);
+    this.auctionService.getPrice()
+      .subscribe(price => this.auction.price = price);
   }
 
   constructor (

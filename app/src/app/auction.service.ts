@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Auction } from './auction'
+import { Auction } from './auction';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,14 @@ export class AuctionService {
 
   constructor(
     private http: HttpClient,
+    private socket: Socket,
   ) { }
 
   postLicit(licit: Number): Observable<any>{
     return this.http.post(this.postlicitUrl, {"licit": licit}, this.httpOptions);
+  }
+  
+  getPrice(): Observable<number> {
+    return this.socket.fromEvent<number>('price');
   }
 }
