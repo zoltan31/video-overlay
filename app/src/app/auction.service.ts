@@ -16,7 +16,7 @@ export class AuctionService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  getName() : Observable<Auction> {
+  getAuction() : Observable<Auction> {
     return this.http.get<Auction>(this.auctionUrl);
   }
 
@@ -25,11 +25,15 @@ export class AuctionService {
     private socket: Socket,
   ) { }
 
-  postLicit(licit: Number): Observable<any>{
-    return this.http.post(this.postlicitUrl, {"licit": licit}, this.httpOptions);
+  postLicit(licit: number, userId: number): Observable<any>{
+    return this.http.post(this.postlicitUrl, {"licit": licit, "userId": userId}, this.httpOptions);
   }
   
   getPrice(): Observable<number> {
     return this.socket.fromEvent<number>('price');
+  }
+  
+  getLicitEvent(): Observable<string> {
+    return this.socket.fromEvent<string>('licit event');
   }
 }

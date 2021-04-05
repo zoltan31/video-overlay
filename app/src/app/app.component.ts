@@ -11,20 +11,30 @@ export class AppComponent {
   title = 'app';
 
   @Input() auction?: Auction;
+  @Input() licitEvents?: string[];
+  userId: number;
 
-  getName(): void {
-    this.auctionService.getName()
+  setCallbacks(): void {
+    this.auctionService.getAuction()
       .subscribe(auction => this.auction = auction);
     this.auctionService.getPrice()
-      .subscribe(price => this.auction.price = price);
+      .subscribe(price => {console.log(price);this.auction.price = price});
+    this.auctionService.getLicitEvent()
+      .subscribe(licitEvent => { console.log(licitEvent);this.licitEvents.push(licitEvent)});
   }
 
   constructor (
     private auctionService: AuctionService
   ) {}
 
+  getRandomInt(max: number): number {
+    return Math.floor(Math.random() * max);
+  }
+
   ngOnInit(): void {
-    this.getName();
+    this.licitEvents = new Array<string>();
+    this.userId = this.getRandomInt(100);
+    this.setCallbacks();
   }
 
   increase(): void {
@@ -37,7 +47,6 @@ export class AppComponent {
   }
 
   makeLicit(): void{
-    this.auctionService.postLicit(this.auction.licit).subscribe(res => console.log(res));
-    //this.getName();
+    this.auctionService.postLicit(this.auction.licit, this.userId).subscribe(res => console.log(res));
   }
 }

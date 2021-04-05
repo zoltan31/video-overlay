@@ -27,9 +27,11 @@
     </div>
 
     <!-- User activities -->
-    <div class="user-activites">
+    <div id="licit_window" class="user-activites">
       <h2>Felhasznaloi tevekenysegek</h2>
-      <p>User A: Emelte az arat 90 dollarral</p>
+      <div *ngFor="let event of licitEvents">
+      <p>{{ event }}</p>
+      </div>
     </div>
   </div>
 </div>

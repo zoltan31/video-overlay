@@ -8,19 +8,9 @@ const port = 5000;
 const server = http.createServer(app);
 const io = new Server(server, {cors: {origin: "*"}});
 
-//io.on('connection', async (socket) => {
-	//console.log('a user connected');
-	//let price: number;
-	//await Auction.findOne((err, entity) => 
-	//{
-		//price = entity.price;
-	//});
-	//console.log(price);
-	//socket.emit('price', price);
-//});
-
 app.post("/api/auction/postlicit", async (_request, response) => {
 	let _licit = _request.body.licit;
+	let _userId = _request.body.userId;
 	let price: number;
 	await Auction.findOne((err, entity) => 
 	{
@@ -31,6 +21,7 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 		{price: _licit + price},
 	);
 	io.sockets.emit('price', price + _licit);
+    io.sockets.emit('licit event', `${_userId} made bid: +${_licit}$`);
 	response.sendStatus(200);
 })
 

@@ -79,3 +79,7 @@ button {
 .user-activites > h2 {
 	text-align: center;
 }
+
+#licit_window {
+	overflow-y: scroll;
+}
