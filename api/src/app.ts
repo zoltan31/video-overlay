@@ -12,15 +12,18 @@ async function testDb() {
 	db.on('error', (error) => console.error(error));
 	db.once('open', () => console.log('Connected to Database'));
 	// insert new object into DB
-	const firstAuction = new Auction({name: "Auction Name From MongoDB🔥"});
-	Auction.countDocuments({ name: "Auction Name From MongoDB🔥" }, (err, count) => count === 0 && firstAuction.save());
+	const firstAuction = new Auction({id: 1, name: "Auction Name From MongoDb 🔥", price: 1000, licit: 100});
+	Auction.countDocuments({ id: 1 }, (err, count) => count === 0 && firstAuction.save());
 }
 
 const corsOptions = {
-  origin: 'http://localhost:5000',
+  origin: '*',
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+app.use(express.json())
+
+testDb();
 
 app.get("/", (_request, response) => {
 	response.send("Hello World!");
@@ -28,7 +31,6 @@ app.get("/", (_request, response) => {
 
 app.get("/api/auction/", async (_request, response) => {
 	try {
-		await testDb();
 		const auction = await Auction.find();
 		response.json(auction[0]); // there is one auction, so only the first will be returned
 	} catch (err) {
@@ -36,4 +38,5 @@ app.get("/api/auction/", async (_request, response) => {
 	}
 });
 
+export { Auction };
 export default app;

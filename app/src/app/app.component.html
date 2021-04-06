@@ -11,25 +11,27 @@
     </div>
 
     <!-- Title -->
-    <h1 class="title">{{auction.name}}</h1>
+    <h1 class="title">{{ auction.name }}</h1>
 
     <!-- Licit price and buttons -->
     <div class="licit-ui">
-      <h2 class="price">$90.00</h2>
+      <h2 class="price">{{ auction.price }}</h2>
       <div class="licit-button-group">
-        <p class="licit-amount">100</p>
-        <button class="licit-button">Licitalok</button>
+        <p class="licit-amount">{{ auction.licit }}</p>
+        <button class="licit-button" (click)="makeLicit()">Licitalok</button>
         <div class="licit-change-group">
-          <button>+</button>
-          <button>-</button>
+          <button (click)="increase()">+</button>
+          <button (click)="decrease()">-</button>
         </div>
       </div>
     </div>
 
     <!-- User activities -->
-    <div class="user-activites">
+    <div id="licit_window" class="user-activites">
       <h2>Felhasznaloi tevekenysegek</h2>
-      <p>User A: Emelte az arat 90 dollarral</p>
+      <div *ngFor="let event of licitEvents">
+      <p>{{ event }}</p>
+      </div>
     </div>
   </div>
 </div>
