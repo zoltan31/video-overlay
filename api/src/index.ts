@@ -1,11 +1,10 @@
-import * as express from "express";
-import { pathToFileURL } from "node:url";
+import app from "./app";
+import { Auction } from "./app";
+import { Server } from "socket.io";
+import * as http from "http";
+import * as fs from "fs";
 
-const app = express();
 const port = 5000;
-const fs = require("fs");
-
-
 
 app.get("/", function (req, res) {
 	res.sendFile("app.component.html", {root: "../app/src/app/"});
@@ -46,8 +45,26 @@ app.get("/video", function (req, res) {
 	// Stream the video chunk to the client
 	videoStream.pipe(res);
   });
+const server = http.createServer(app);
+const io = new Server(server, {cors: {origin: "*"}});
 
-app.listen(port, () => {
+app.post("/api/auction/postlicit", async (_request, response) => {
+	let _licit = _request.body.licit;
+	let _userId = _request.body.userId;
+	let price: number;
+	await Auction.findOne((err, entity) => 
+	{
+		price = entity.price;
+	});
+	await Auction.updateOne(
+		{id: 1},
+		{price: _licit + price},
+	);
+	io.sockets.emit('price', price + _licit);
+    io.sockets.emit('licit event', `${_userId} made bid: +${_licit}$`);
+	response.sendStatus(200);
+})
+
+server.listen(port, () => {
 	console.log(`Server started at http://localhost:${port}`);
 });
-
