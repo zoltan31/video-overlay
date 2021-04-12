@@ -22,10 +22,10 @@
       <div class="video-content">
       <!-- Licit price and buttons -->
       <div class="licit-ui">
-        <h2 class="price">{{ auction.price }}</h2>
+        <h2 class="price">Current bid: {{ auction.price }}$</h2>
         <div class="licit-button-group">
-          <p class="licit-amount">{{ auction.licit }}</p>
-          <button class="licit-button" (click)="makeLicit()">Licitalok</button>
+          <p class="licit-amount">Raise: {{ auction.licit }}$</p>
+          <button class="licit-button" (click)="makeLicit()">Make bid</button>
           <div class="licit-change-group">
             <button (click)="increase()">+</button>
             <button (click)="decrease()">-</button>
