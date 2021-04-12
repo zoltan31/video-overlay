@@ -1,0 +1,7 @@
+.timer {
+	display: flex;
+	border: 1px solid black;
+	max-width: fit-content;
+	padding: 0.2rem;
+	line-height: 0.2rem;
+}

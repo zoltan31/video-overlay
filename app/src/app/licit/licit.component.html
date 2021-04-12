@@ -1,0 +1,19 @@
+<div class="layout">
+    <app-timer></app-timer>
+    <app-licit-name></app-licit-name>
+    <div class="video-view">
+        <video class="video" id="videoPlayer" width="100%" height="100%" controls muted autoplay>
+            <source src="/video" type="video/mp4" />
+        </video>
+        <div class="video-content">
+            <div class="licit-ui">
+                <app-current-bid></app-current-bid>
+                <div class="licit-button-group">
+                    <app-raise-bid></app-raise-bid>
+                    <app-licit-buttons></app-licit-buttons>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-user-activities></app-user-activities>
+</div>
