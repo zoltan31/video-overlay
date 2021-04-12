@@ -62,7 +62,9 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 	);
 	io.sockets.emit('price', price + _licit);
     io.sockets.emit('licit event', `${_userId} made bid: +${_licit}$`);
-	response.sendStatus(200);
+	response.setHeader("Content-Type", "application/json");
+	response.status(200);
+	response.send(_request.body);
 })
 
 server.listen(port, () => {
