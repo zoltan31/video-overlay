@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RaiseAmountService } from '../raise-amount.service';
 
 @Component({
   selector: 'app-raise-bid',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaiseBidComponent implements OnInit {
   raiseAmount: number = 0;
-  constructor() { }
+  constructor(
+    private raiseAmountService: RaiseAmountService
+  ) { }
 
   ngOnInit(): void {
+    this.raiseAmountService.getRaiseAmount()
+      .subscribe(raiseAmount => this.raiseAmount = raiseAmount);;
   }
 
 }

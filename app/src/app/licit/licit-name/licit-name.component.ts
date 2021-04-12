@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuctionService } from '../auction.service';
 
 @Component({
   selector: 'app-licit-name',
@@ -6,15 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./licit-name.component.css']
 })
 export class LicitNameComponent implements OnInit {
-  auctionname: string = "auction name placeholder";
-  constructor() { }
+  auctionName: string = "auction name placeholder";
+  constructor(
+    private auctionService: AuctionService
+  ) { }
 
   ngOnInit(): void {
+    this.auctionService.getAuction()
+      .subscribe(auction => this.auctionName = auction.name)
   }
-  
-  makeLicit(): void {}
-
-  increase(): void {}
-
-  decrease(): void {}
 }

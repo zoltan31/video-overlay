@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuctionService } from '../auction.service';
 
 @Component({
   selector: 'app-user-activities',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserActivitiesComponent implements OnInit {
 
-  licitEvents: string[];
-  constructor() { }
+  licitEvents: string[] = new Array();
+  constructor(
+    private auctionService: AuctionService
+  ) { }
 
   ngOnInit(): void {
+    this.auctionService.getBidEvent()
+      .subscribe(event => this.licitEvents.unshift(event))
   }
-
 }

@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SocketIoModule } from 'ngx-socket-io';
 import { socketConfig } from 'src/utils/socket-config';
 
-import { LicitButtonsComponent } from './licit-buttons.component';
+import { HighestBidComponent } from './highest-bid.component';
 
-describe('LicitButtonsComponent', () => {
-  let component: LicitButtonsComponent;
-  let fixture: ComponentFixture<LicitButtonsComponent>;
+describe('HighestBidComponent', () => {
+  let component: HighestBidComponent;
+  let fixture: ComponentFixture<HighestBidComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -15,13 +15,13 @@ describe('LicitButtonsComponent', () => {
         HttpClientModule,
         SocketIoModule.forRoot(socketConfig)
       ],
-      declarations: [ LicitButtonsComponent ]
+      declarations: [ HighestBidComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LicitButtonsComponent);
+    fixture = TestBed.createComponent(HighestBidComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

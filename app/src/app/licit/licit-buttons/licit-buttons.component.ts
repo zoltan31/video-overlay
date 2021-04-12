@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuctionService } from '../auction.service';
+import { RaiseAmountService } from '../raise-amount.service';
 
 @Component({
   selector: 'app-licit-buttons',
@@ -7,15 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LicitButtonsComponent implements OnInit {
 
-  constructor() { }
+  raiseAmount: number = 100;
+  userID: number;
+
+  constructor(
+    private auctionService: AuctionService,
+    private RaiseAmountService: RaiseAmountService
+  ) { }
 
   ngOnInit(): void {
+    this.userID = Math.floor(Math.random() * 100);
+    this.RaiseAmountService.setRaiseAmount(this.raiseAmount);
   }
 
-  makeLicit(): void {}
+  makeLicit(): void {
+    this.auctionService.postBid(this.raiseAmount, this.userID)
+      .subscribe(x => {
+        this.raiseAmount = 100;
+        this.RaiseAmountService.setRaiseAmount(this.raiseAmount);
+      });
+  }
 
-  increase(): void {}
+  increase(): void {
+    this.raiseAmount += 100;
+    this.RaiseAmountService.setRaiseAmount(this.raiseAmount);
+  }
 
-  decrease(): void {}
-
+  decrease(): void {
+    if (this.raiseAmount > 100) {
+      this.raiseAmount -= 100;
+      this.RaiseAmountService.setRaiseAmount(this.raiseAmount);
+    }
+  }
 }
