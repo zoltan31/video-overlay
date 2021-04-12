@@ -15,27 +15,30 @@
     <!-- Title -->
     <h1 class="title">{{ auction.name }}</h1>
 
-    <video id="videoPlayer" width="100%" height="100%" controls muted autoplay>
-      <source src="/video" type="video/mp4" />
-    </video>
-
-    <!-- Licit price and buttons -->
-    <div class="licit-ui">
-      <h2 class="price">{{ auction.price }}</h2>
-      <div class="licit-button-group">
-        <p class="licit-amount">{{ auction.licit }}</p>
-        <button class="licit-button" (click)="makeLicit()">Licitalok</button>
-        <div class="licit-change-group">
-          <button (click)="increase()">+</button>
-          <button (click)="decrease()">-</button>
+    <div class="video-view">
+      <video class="video" id="videoPlayer" width="100%" height="100%" controls muted autoplay>
+        <source src="/video" type="video/mp4" />
+      </video>
+      <div class="video-content">
+      <!-- Licit price and buttons -->
+      <div class="licit-ui">
+        <h2 class="price">Current bid: {{ auction.price }}$</h2>
+        <div class="licit-button-group">
+          <p class="licit-amount">Raise: {{ auction.licit }}$</p>
+          <button class="licit-button" (click)="makeLicit()">Make bid</button>
+          <div class="licit-change-group">
+            <button (click)="increase()">+</button>
+            <button (click)="decrease()">-</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
     <!-- User activities -->
     <div id="licit_window" class="user-activites">
       <h2>Felhasznaloi tevekenysegek</h2>
-      <div *ngFor="let event of licitEvents">
+      <div id="event" *ngFor="let event of licitEvents">
       <p>{{ event }}</p>
       </div>
     </div>
