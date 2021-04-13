@@ -9,11 +9,9 @@ import { AuctionService } from '../auction.service';
 import { LicitNameComponent } from './licit-name.component';
 
 class AuctionStubService {
-  getAuction(): Observable<Auction> {
+  getAuction(): Observable<{name: string}> {
     return of({
-      name: "TEST",
-      price: 0,
-      licit: 0,
+      name: "TEST"
     });
   }
 }
