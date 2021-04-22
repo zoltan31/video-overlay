@@ -30,13 +30,14 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const usernameIsFree = /* TODO: Here comes the HTTP call */ true;
-    if (usernameIsFree) {
-      this.loginService.adduser(this.username).subscribe(x => { console.log("Added user: " + this.username)});
-      this.router.navigate(["/licit", { name: this.username }]);
-    } else {
-      this.error = "wrong-username";
-    }
+    this.loginService.containsUser(this.username).subscribe(response => {
+      if (!response.containsuser) {
+        this.loginService.adduser(this.username).subscribe(x => { console.log("Added user: " + this.username)});
+        this.router.navigate(["/licit", { name: this.username }]);
+      } else {
+        this.error = "wrong-username";
+      }
+    });
   }
 
 }

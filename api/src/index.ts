@@ -77,6 +77,18 @@ app.post("/api/auction/adduser", async (request, response) => {
 	response.send(request.body);
 });
 
+app.get("/api/auction/containsuser", async (request, response) => {
+	const username = request.query.username;
+	await User.countDocuments({name: username}, (err, count) => {
+		if (count === 0) {
+			response.json({containsuser: false, name: username});
+		}
+		else {
+			response.json({containsuser: true, name: username});
+		}
+	});
+});
+
 server.listen(port, () => {
 	console.log(`Server started at http://localhost:${port}`);
 });
