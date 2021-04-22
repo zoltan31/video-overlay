@@ -51,7 +51,7 @@ const io = new Server(server, {cors: {origin: "*"}});
 
 app.post("/api/auction/postlicit", async (_request, response) => {
 	let _licit = _request.body.licit;
-	let _userId = _request.body.userId;
+	let _username = _request.body.username;
 	let price: number;
 	await Auction.findOne((err, entity) => 
 	{
@@ -62,7 +62,7 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 		{price: _licit + price},
 	);
 	io.sockets.emit('price', price + _licit);
-    io.sockets.emit('licit event', `${_userId} made bid: +${_licit}$`);
+    io.sockets.emit('licit event', `${_username} made bid: +${_licit}$`);
 	response.setHeader("Content-Type", "application/json");
 	response.status(200);
 	response.send(_request.body);

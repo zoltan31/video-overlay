@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsernameService } from '../username.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,12 @@ export class LoginService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private usernameService: UsernameService
   ) { }
 
   adduser(username: string): Observable<any> {
+    this.usernameService.username = username;
     return this.http.post(this.postUserUrl, {"username": username}, this.httpOptions);
   }
 
