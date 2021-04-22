@@ -13,6 +13,7 @@ import { UserActivitiesComponent } from './licit/user-activities/user-activities
 import { TimerComponent } from './licit/timer/timer.component';
 import { RaiseBidComponent } from './licit/raise-bid/raise-bid.component';
 import { LicitComponent } from './licit/licit.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LicitComponent } from './licit/licit.component';
     UserActivitiesComponent,
     TimerComponent,
     RaiseBidComponent,
-    LicitComponent
+    LicitComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

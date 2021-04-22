@@ -1,0 +1,14 @@
+<div class="frame">
+	<div>
+		<h1>Auction Portal</h1>
+		<div>
+			<label for="username" >Username</label>
+			<input id="username" type="text" (keyup)="onKey($event)" />
+			<p class="error" *ngIf="error == 'wrong-username' ">The username is taken! Choose another one</p>
+			<p class="error" *ngIf="error == 'no-username' ">Choose an username.</p>
+		</div>
+		<div class="button-group">
+			<button (click)="onLogin()">Join</button>
+		</div>
+	</div>
+</div>
