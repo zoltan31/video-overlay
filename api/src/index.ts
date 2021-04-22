@@ -72,6 +72,7 @@ app.post("/api/auction/adduser", async (request, response) => {
 	const username = request.body.username;
 	const user = new User({name: username});
 	user.save();
+	io.sockets.emit('user connection', username);
 	response.setHeader("Content-Type", "application/json");
 	response.status(200);
 	response.send(request.body);

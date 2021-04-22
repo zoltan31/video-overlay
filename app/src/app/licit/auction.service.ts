@@ -36,4 +36,8 @@ export class AuctionService {
   getBidEvent(): Observable<string> {
     return this.socket.fromEvent<string>('licit event');
   }
+
+  getUserConnection(): Observable<string> {
+    return this.socket.fromEvent<string>('user connection');
+  }
 }
