@@ -3,6 +3,7 @@ import { Auction } from "./app";
 import { Server } from "socket.io";
 import * as http from "http";
 import * as fs from "fs";
+import User from "./models/user";
 
 const port = 5000;
 
@@ -66,6 +67,15 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 	response.status(200);
 	response.send(_request.body);
 })
+
+app.post("/api/auction/adduser", async (request, response) => {
+	const username = request.body.username;
+	const user = new User({name: username});
+	user.save();
+	response.setHeader("Content-Type", "application/json");
+	response.status(200);
+	response.send(request.body);
+});
 
 server.listen(port, () => {
 	console.log(`Server started at http://localhost:${port}`);

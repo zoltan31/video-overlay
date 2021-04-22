@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   error: "none" | "wrong-username" | "no-username" = "none";
 
   constructor(
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
 
     const usernameIsFree = /* TODO: Here comes the HTTP call */ true;
     if (usernameIsFree) {
+      this.loginService.adduser(this.username).subscribe(x => { console.log("Added user: " + this.username)});
       this.router.navigate(["/licit", { name: this.username }]);
     } else {
       this.error = "wrong-username";
