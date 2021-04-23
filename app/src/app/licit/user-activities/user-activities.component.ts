@@ -16,5 +16,7 @@ export class UserActivitiesComponent implements OnInit {
   ngOnInit(): void {
     this.auctionService.getBidEvent()
       .subscribe(event => this.licitEvents.unshift(event))
+    this.auctionService.getUserConnection()
+      .subscribe(event => this.licitEvents.unshift("Hello " + event + "! 👋"))
   }
 }

@@ -25,8 +25,8 @@ export class AuctionService {
     private socket: Socket,
   ) { }
 
-  postBid(bid: number, userId: number): Observable<any> { 
-    return this.http.post(this.postBidUrl, {"licit": bid, "userId": userId}, this.httpOptions);
+  postBid(bid: number, username: string): Observable<any> { 
+    return this.http.post(this.postBidUrl, {"licit": bid, "username": username}, this.httpOptions);
   }
   
   getHighestBid(): Observable<number> {
@@ -35,5 +35,9 @@ export class AuctionService {
   
   getBidEvent(): Observable<string> {
     return this.socket.fromEvent<string>('licit event');
+  }
+
+  getUserConnection(): Observable<string> {
+    return this.socket.fromEvent<string>('user connection');
   }
 }

@@ -3,6 +3,7 @@ import { Auction } from "./app";
 import { Server } from "socket.io";
 import * as http from "http";
 import * as fs from "fs";
+import User from "./models/user";
 
 const port = 5000;
 
@@ -50,7 +51,7 @@ const io = new Server(server, {cors: {origin: "*"}});
 
 app.post("/api/auction/postlicit", async (_request, response) => {
 	let _licit = _request.body.licit;
-	let _userId = _request.body.userId;
+	let _username = _request.body.username;
 	let price: number;
 	await Auction.findOne((err, entity) => 
 	{
@@ -61,11 +62,33 @@ app.post("/api/auction/postlicit", async (_request, response) => {
 		{price: _licit + price},
 	);
 	io.sockets.emit('price', price + _licit);
-    io.sockets.emit('licit event', `${_userId} made bid: +${_licit}$`);
+    io.sockets.emit('licit event', `${_username} made bid: +${_licit}$`);
 	response.setHeader("Content-Type", "application/json");
 	response.status(200);
 	response.send(_request.body);
 })
+
+app.post("/api/auction/adduser", async (request, response) => {
+	const username = request.body.username;
+	const user = new User({name: username});
+	user.save();
+	io.sockets.emit('user connection', username);
+	response.setHeader("Content-Type", "application/json");
+	response.status(200);
+	response.send(request.body);
+});
+
+app.get("/api/auction/containsuser", async (request, response) => {
+	const username = request.query.username;
+	await User.countDocuments({name: username}, (err, count) => {
+		if (count === 0) {
+			response.json({containsuser: false, name: username});
+		}
+		else {
+			response.json({containsuser: true, name: username});
+		}
+	});
+});
 
 server.listen(port, () => {
 	console.log(`Server started at http://localhost:${port}`);
