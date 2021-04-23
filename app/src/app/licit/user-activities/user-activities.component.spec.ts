@@ -16,6 +16,9 @@ class AuctionStubService {
       subscriber.complete();
     })
   }
+  getUserConnection(): Observable<string> {
+    return of("user A");
+  }
 }
 
 describe('UserActivitiesComponent', () => {
@@ -51,10 +54,10 @@ describe('UserActivitiesComponent', () => {
   });
 
   it('should contain 3 elements', () => {
-    expect(component.licitEvents.length).toBe(3);
+    expect(component.licitEvents.length).toBe(4);
   })
 
   it('should contain last added element as first element', () => {
-    expect(component.licitEvents[0]).toBe("48 made bid: +300$");
+    expect(component.licitEvents[1]).toBe("48 made bid: +300$");
   })
 });
