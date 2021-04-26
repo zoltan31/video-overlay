@@ -1,9 +1,15 @@
+.div-relative{
+	position: relative;
+	height: 520px;
+}
+
 .user-activites {
 	border: 1px solid black;
-	width: 100%;
-	height: 10rem;
+	width: 50%;
+    height: 10rem;
+    margin-left: 450px;
 	bottom: 0;
-	right: 0;
+	position: absolute;
 }
 
 .user-activites > h2 {
@@ -13,4 +19,14 @@
 #licit_window {
 	overflow-y: scroll;
 	background-color: rgba(128, 128, 128, 0.26);
+}
+
+#licit_window h2{
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+#event{
+	text-align: center;
+	font-size: 18px;
 }
