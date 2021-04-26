@@ -90,6 +90,18 @@ app.get("/api/auction/containsuser", async (request, response) => {
 	});
 });
 
+let timeLeft = 15*60; // 15 minutes
+
+setInterval(() =>  {
+	if (timeLeft > 0){
+		timeLeft -= 1; 
+	}
+	else{
+		timeLeft = 15*60;
+	}
+	io.sockets.emit('timer', timeLeft);
+}, 1000);
+
 server.listen(port, () => {
 	console.log(`Server started at http://localhost:${port}`);
 });
