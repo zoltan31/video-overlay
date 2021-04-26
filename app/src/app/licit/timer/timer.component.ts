@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuctionService } from '../auction.service';
 
 @Component({
   selector: 'app-timer',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
+  minute: number;
+  second: number;
 
-  constructor() { }
+  constructor(
+    private auctionService: AuctionService
+  ) { }
 
   ngOnInit(): void {
+    this.auctionService.getTimer().subscribe(x => {
+      this.minute = Math.trunc(x/60);
+      this.second = x%60;
+    });
   }
-
 }

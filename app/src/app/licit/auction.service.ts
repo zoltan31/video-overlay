@@ -40,4 +40,8 @@ export class AuctionService {
   getUserConnection(): Observable<string> {
     return this.socket.fromEvent<string>('user connection');
   }
+
+  getTimer(): Observable<number> {
+    return this.socket.fromEvent<number>('timer');
+  }
 }
