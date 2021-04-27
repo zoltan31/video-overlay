@@ -1,7 +1,8 @@
 .licit-amount {
 	border: 1px dashed black;
+	border-radius: 25px;
 	width: fit-content;
-	padding: 0.2rem;
+	padding: 10px;
 	font-size: 20px;
     font-weight: bold;
 }
