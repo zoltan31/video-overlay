@@ -2,6 +2,10 @@ import * as express from "express";
 import * as cors from "cors";
 import * as mongoose from "mongoose";
 import Auction from "./models/auction";
+import * as http from "http";
+import VideoRouter from "./video/video";
+import AuctionRouter from "./auction/auction";
+import { Server } from "socket.io";
 
 const app = express();
 
@@ -25,18 +29,13 @@ app.use(express.json())
 
 testDb();
 
+export const server = http.createServer(app);
+export const io = new Server(server, {cors: {origin: "*"}});
+
+app.use("/api/auction", AuctionRouter);
+app.use("/video", VideoRouter);
 app.get("/", (_request, response) => {
 	response.send("Hello World!");
 });
 
-app.get("/api/auction/", async (_request, response) => {
-	try {
-		const auction = await Auction.find();
-		response.json(auction[0]); // there is one auction, so only the first will be returned
-	} catch (err) {
-		response.status(500).json({message: err.message});
-	}
-});
-
-export { Auction };
 export default app;

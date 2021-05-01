@@ -8,4 +8,6 @@ const auctionSchema: mongoose.Schema = new mongoose.Schema({
     licit: Number
 });
 
-export default mongoose.model('Auction', auctionSchema);
+const Auction = mongoose.model("Auction", auctionSchema);
+
+export default Auction;
