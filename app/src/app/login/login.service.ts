@@ -8,8 +8,8 @@ import { UsernameService } from '../username.service';
 })
 export class LoginService {
 
-  private postUserUrl = 'http://localhost:5000/api/auction/adduser';
-  private containsUserUrl = 'http://localhost:5000/api/auction/containsuser';
+  private postUserUrl = 'http://35.234.121.57/api/auction/adduser';
+  private containsUserUrl = 'http://35.234.121.57/api/auction/containsuser';
 
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
