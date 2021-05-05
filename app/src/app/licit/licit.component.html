@@ -1,17 +1,23 @@
 <div class="layout">
-    <app-licit-name></app-licit-name>
-    <div class="video-view">
-        <img style="-webkit-user-select: none;" class="video" id="videoPlayer" src="http://agiliscucc.ddns.net:56000/mjpeg" width="100%" height="100%">
-        <div class="video-content">
-            <app-timer></app-timer>
-            <div class="licit-ui">
-                <app-highest-bid></app-highest-bid>
+         <div class="video-view">
+            <img style="-webkit-user-select: none;" class="video" id="videoPlayer" src="http://agiliscucc.ddns.net:56000/mjpeg" width="100%" height="100%">
+             <div class="video-content">
+                <div class="licit-name">
+                    <app-licit-name></app-licit-name>
+                </div>
+                <div class="highest-bid">
+                     <app-highest-bid></app-highest-bid>
+                 </div>
+                <div class="timer">
+                    <app-timer></app-timer>
+                </div>
                 <div class="licit-button-group">
                     <app-raise-bid></app-raise-bid>
                     <app-licit-buttons></app-licit-buttons>
                 </div>
-            </div>
-            <app-user-activities></app-user-activities>
-        </div>
-    </div>
+                <div class="user-activities">
+                    <app-user-activities></app-user-activities>
+                </div>
+             </div>
+         </div>
 </div>

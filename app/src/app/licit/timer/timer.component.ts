@@ -18,6 +18,10 @@ export class TimerComponent implements OnInit {
     this.auctionService.getTimer().subscribe(x => {
       this.minute = Math.trunc(x/60);
       this.second = x%60;
+      if (this.minute <= 0 && this.second <= 10) {
+        document.getElementById("timer").style.color = "red";
+        document.getElementById("timer").style.fontWeight = "bold";
+      }
     });
   }
 }

@@ -1,15 +1,79 @@
+.buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+
 .licit-button{
     font-size: 18px;
-    width: 100%;
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    justify-self: center;
+    margin: 10px;
+    width: 150px;
+    height: 90%;
+    background-image: linear-gradient(to right, #1c5da8, #133866);
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: inline-block;
+}
+
+.licit-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.licit-button span:after {
+  content: '👍';
+  position: absolute;
+  opacity: 0;
+  top: -5px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.licit-button:hover span {
+  padding-right: 25px;
+}
+
+.licit-button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 #plus{
     font-size: 16px;
-    width: 50%;
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: center;
+    margin: 10px;
+    width: 60%;
+    height: 90%;
+    background-image: linear-gradient(to right, #1c5da8, #133866);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #minus{
     font-size: 16px;
-    width: 50%;
-    float: right;
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: center;
+    margin: 10px;
+    width: 60%;
+    height: 90%;
+    background-image: linear-gradient(to right, #1c5da8, #133866);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

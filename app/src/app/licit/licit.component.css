@@ -5,11 +5,12 @@
 	bottom: 0;
 	left: 0;
 	background-color: rgba(128, 128, 128, 0.26);
+	font-family: 'Lato', sans-serif;
 }
 
 .video-view {
 	position: relative;
-	height: 93%;
+	height: 100%;
 }
 
 .video-view .video {
@@ -21,15 +22,37 @@
 
 .video-view .video-content {
 	position: relative;
-	bottom: 0px;
-}
-
-.video-view .video-content .licit-ui {
 	display: grid;
-	grid-template: auto / auto auto;
+	grid-template-columns: auto 65% auto;
+	grid-template-rows: auto auto 45vh auto;
 }
 
-.video-view .video-content .licit-ui .licit-button-group {
-	margin-left: auto;
-	margin-right: auto;
+.highest-bid {
+	grid-column: 1;
+	grid-row: 2;
+	align-self: center;
+}
+
+.licit-button-group {
+	justify-self: center;
+	grid-column: 3;
+	grid-row: 2;
+}
+
+.timer {
+	justify-self: center;
+	align-self: center;
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.user-activities {
+	grid-column: 2;
+	grid-row: 4;
+	align-self: flex-end;
+}
+
+.licit-name {
+	grid-column: 1 / span 3;
+	grid-row: 1;
 }

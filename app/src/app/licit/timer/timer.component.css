@@ -1,12 +1,11 @@
 .timer {
 	display: flex;
-	border: 1px dashed black;
-	border-radius: 100px;
-	max-width: fit-content;
+	align-items: center;
+	border-radius: 10px;
 	padding: 10px;
-	line-height: 0.2rem;
-	margin-left: auto;
-	margin-right: auto;
+	height: 30px;
+	background-color: hsla(0, 0%, 0%, 0.5);
+	color: white;
 }
 
 .timer p{
