@@ -1,16 +1,12 @@
 .div-relative{
-	position: relative;
-	height: 530px;
+	display: flex;
+	justify-content: center;
 }
 
 .user-activites {
-	border: 1px dashed black;
-	border-radius: 25px;
+	border-radius: 10px;
 	width: 50%;
     height: 10rem;
-    margin-left: 450px;
-	bottom: 0;
-	position: absolute;
 }
 
 .user-activites > h2 {
@@ -19,7 +15,8 @@
 
 #licit_window {
 	overflow-y: scroll;
-	background-color: rgba(128, 128, 128, 0.26);
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
