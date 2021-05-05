@@ -25,14 +25,14 @@ export class AuctionService {
     private socket: Socket,
   ) { }
 
-  postBid(bid: number, username: string): Observable<any> { 
+  postBid(bid: number, username: string): Observable<any> {
     return this.http.post(this.postBidUrl, {"licit": bid, "username": username}, this.httpOptions);
   }
-  
+
   getHighestBid(): Observable<number> {
     return this.socket.fromEvent<number>('price');
   }
-  
+
   getBidEvent(): Observable<string> {
     return this.socket.fromEvent<string>('licit event');
   }
@@ -43,5 +43,9 @@ export class AuctionService {
 
   getTimer(): Observable<number> {
     return this.socket.fromEvent<number>('timer');
+  }
+
+  getWinner(): Observable<{name: string, price: number}> {
+    return this.socket.fromEvent<{name: string, price: number}>('winner');
   }
 }

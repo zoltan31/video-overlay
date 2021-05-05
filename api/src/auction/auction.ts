@@ -26,6 +26,10 @@ router.post("/postlicit", async (_request, response) => {
         {id: 1},
         {price: _licit + price},
     );
+    await User.updateOne(
+        {name: _username},
+        {bid: _licit + price}
+    );
     io.sockets.emit('price', price + _licit);
     io.sockets.emit('licit event', `${_username} made bid: +${_licit}$`);
     response.setHeader("Content-Type", "application/json");

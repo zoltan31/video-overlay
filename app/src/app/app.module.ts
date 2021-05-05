@@ -14,6 +14,7 @@ import { TimerComponent } from './licit/timer/timer.component';
 import { RaiseBidComponent } from './licit/raise-bid/raise-bid.component';
 import { LicitComponent } from './licit/licit.component';
 import { LoginComponent } from './login/login.component';
+import { WinnerComponent } from './licit/winner/winner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     TimerComponent,
     RaiseBidComponent,
     LicitComponent,
-    LoginComponent
+    LoginComponent,
+    WinnerComponent
   ],
   imports: [
     BrowserModule,
