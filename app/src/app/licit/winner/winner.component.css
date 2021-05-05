@@ -1,5 +1,14 @@
-div {
+#winner-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+h2 {
+    margin-top: 0px;
 }
