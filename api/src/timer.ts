@@ -10,10 +10,10 @@ export const startTimer = (io: Server) => {
         }
         else{
             timeLeft = 15*60;
-            await User.find().sort({bid: -1}).limit(1).findOne((err, entity) => {
-                io.sockets.emit('winner', {name: entity.name, price: entity.bid});
-            });
         }
+        await User.find().sort({bid: -1}).limit(1).findOne((err, entity) => {
+            io.sockets.emit('winner', {name: entity.name, price: entity.bid});
+        });
         io.sockets.emit('timer', timeLeft);
     }, 1000);
 };
