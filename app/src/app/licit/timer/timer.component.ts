@@ -25,7 +25,8 @@ export class TimerComponent implements OnInit {
       if (this.minute === 0 && this.second === 0) {
         setTimeout(() => {
           this.router.navigate(["/winner", {}]);
-        }, 1000)
+        }, 1000);
+      }
         
       if (this.minute <= 0 && this.second <= 10) {
         document.getElementById("timer").style.color = "red";
