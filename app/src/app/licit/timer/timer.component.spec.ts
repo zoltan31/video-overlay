@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SocketIoModule } from 'ngx-socket-io';
 import { socketConfig } from 'src/utils/socket-config';
 
@@ -13,7 +14,8 @@ describe('TimerComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
-        SocketIoModule.forRoot(socketConfig)
+        SocketIoModule.forRoot(socketConfig),
+        RouterTestingModule
       ],
       declarations: [ TimerComponent ]
     })
