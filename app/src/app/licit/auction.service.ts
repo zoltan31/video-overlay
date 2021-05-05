@@ -9,8 +9,8 @@ import { Socket } from 'ngx-socket-io';
 })
 export class AuctionService {
 
-  private auctionUrl = 'http://localhost:5000/api/auction';
-  private postBidUrl = 'http://localhost:5000/api/auction/postlicit'
+  private auctionUrl = 'http://35.234.121.57/api/auction';
+  private postBidUrl = 'http://35.234.121.57/api/auction/postlicit'
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
